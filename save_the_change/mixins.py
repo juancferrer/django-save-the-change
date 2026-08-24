@@ -222,7 +222,7 @@ class OldValues(Mapping):
 					self.instance._changed_fields[field.name] = getattr(
 						self.instance.__class__,
 						field.name
-					).get_queryset().get(pk=self.instance._changed_fields[field.attname])
+					).get_queryset(instance=self.instance).get(pk=self.instance._changed_fields[field.attname])
 
 				except self.instance.DoesNotExist:
 					self.instance._changed_fields[field.name] = DoesNotExist
